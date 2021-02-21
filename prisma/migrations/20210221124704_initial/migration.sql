@@ -1,0 +1,21 @@
+-- CreateTable
+CREATE TABLE "Artist" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "name" TEXT NOT NULL,
+    "gender" TEXT NOT NULL,
+    "contact" TEXT NOT NULL
+);
+
+-- CreateTable
+CREATE TABLE "Album" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL,
+    "title" TEXT NOT NULL,
+    "genre" TEXT NOT NULL,
+    "duration" REAL NOT NULL,
+    "artistId" INTEGER,
+    FOREIGN KEY ("artistId") REFERENCES "Artist" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);

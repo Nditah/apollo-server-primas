@@ -1,0 +1,36 @@
+
+  type Query {
+    info: String!
+    artist(filter: String): [Artist!]!
+    album(filter: String): [Album!]!
+  }
+
+type Mutation {
+    createArtist(name: String!, gender: String!, contact: String): Artist
+    updateArtist(id: ID!, name: String, gender: String, contact: String): Artist
+    # deleteArtist(id: ID!): Artist
+
+    createAlbum(artist: Int!, title: String!, genre: String): Album
+    updateAlbum(id: ID!, title: String, genre: String): Album
+    # deleteAlbum(id: ID!): Album
+}
+
+type Subscription {
+  newArtist: Artist
+  modifiedArtist(id: ID!): Artist
+}
+
+type Artist {
+  id: ID!
+  name: String!
+  gender: String
+  contact: String
+  albums: [Album]
+}
+
+type Album {
+  id: ID!
+  artist: Artist!
+  title: String!
+  genre: String
+}
